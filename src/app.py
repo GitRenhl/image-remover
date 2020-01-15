@@ -6,6 +6,7 @@ import os
 import re
 import logging
 from src.mytoplevel import MyTopLevel
+from src.menu import TopMenu
 
 LOG = logging.getLogger('guiapp')
 
@@ -26,6 +27,7 @@ class App:
         self.root.resizable(False, False)
         self.root.protocol("WM_DELETE_WINDOW", self.close_app)
         self.root.title("Usuwanie plików")
+        TopMenu(self.root, self.close_app)
 
         self.path_string = tk.StringVar()
         # self.path_string.set("G:/Python2019/files_remover/zdj")
