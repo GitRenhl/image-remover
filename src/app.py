@@ -26,7 +26,7 @@ class App:
         self.root.geometry('410x575')
         self.root.resizable(False, False)
         self.root.protocol("WM_DELETE_WINDOW", self.close_app)
-        self.root.title("Usuwanie plików")
+        self.root.title("Usówanie plików")
         TopMenu(self.root, self.close_app)
 
         self.path_string = tk.StringVar()
@@ -60,7 +60,7 @@ class App:
 
         radio_and_btn_frame = tk.Frame(self.root)
         radio_frame = tk.Frame(radio_and_btn_frame)
-        bnt_frame = tk.Frame(radio_and_btn_frame)
+        btn_frame = tk.Frame(radio_and_btn_frame)
 
         radio_label_frame = tk.LabelFrame(radio_frame,
                                           text='Typ plików:')
@@ -74,12 +74,12 @@ class App:
         radio_label_frame.pack()
         radio_frame.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
 
-        ttk.Button(bnt_frame,
+        ttk.Button(btn_frame,
                    text="Usuń",
                    command=self._delete_files).place(relx=0.5,
                                                      rely=0.5,
                                                      anchor=tk.CENTER)
-        bnt_frame.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH)
+        btn_frame.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH)
 
         radio_and_btn_frame.pack(expand=True, fill=tk.BOTH)
 
