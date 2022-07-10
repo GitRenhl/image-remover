@@ -24,9 +24,9 @@ class App:
     def __init__(self):
         self.root = tk.Tk()
         self.root.geometry('410x575')
-        self.root.resizable(False, False)
+        self.root.resizable(False, True)
         self.root.protocol("WM_DELETE_WINDOW", self.close_app)
-        self.root.title("Usówanie plików")
+        self.root.title("Usuwanie plików")
         TopMenu(self.root, self.close_app)
 
         self.path_string = tk.StringVar()
@@ -48,19 +48,9 @@ class App:
                    command=self._get_dir).pack(side=tk.RIGHT)
         path_frame.pack(expand=True, fill=tk.X)
 
-        ############
+        ################################################
 
-        nums_frame = tk.LabelFrame(self.root,
-                                   text='Numery plików:')
-        self.files_num = tk.Text(nums_frame, width=40, height=20)
-        self.files_num.pack()
-        nums_frame.pack(expand=True, fill=tk.X)
-
-        ############
-
-        radio_and_btn_frame = tk.Frame(self.root)
-        radio_frame = tk.Frame(radio_and_btn_frame)
-        btn_frame = tk.Frame(radio_and_btn_frame)
+        radio_frame = tk.Frame(self.root)
 
         radio_label_frame = tk.LabelFrame(radio_frame,
                                           text='Typ plików:')
@@ -72,16 +62,25 @@ class App:
                                 value=mode)
             r.pack(anchor=tk.W, fill=tk.X)
         radio_label_frame.pack()
-        radio_frame.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
+        radio_frame.pack(expand=True, fill=tk.BOTH)
 
+        ################################################
+
+        nums_frame = tk.LabelFrame(self.root,
+                                   text='Numery plików:')
+        self.files_num = tk.Text(nums_frame, width=40, height=20)
+        self.files_num.pack()
+        nums_frame.pack(expand=True, fill=tk.X)
+
+        ################################################
+
+        btn_frame = tk.Frame(self.root)
         ttk.Button(btn_frame,
                    text="Usuń",
                    command=self._delete_files).place(relx=0.5,
                                                      rely=0.5,
                                                      anchor=tk.CENTER)
-        btn_frame.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH)
-
-        radio_and_btn_frame.pack(expand=True, fill=tk.BOTH)
+        btn_frame.pack(expand=True, fill=tk.BOTH)
 
     def run(self):
         self.root.mainloop()
